@@ -58,6 +58,21 @@ public class MainActivity extends AppCompatActivity {
 
         ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.map_view);
 
+        //지도 시작 지점 + 줌 레벨
+        mMapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord( 36.159418038815524, 128.45176036875043), 1, true);
+
+        MapPoint MARKER_POINT = MapPoint.mapPointWithGeoCoord( 36.158828048815524, 128.45326036875043);
+        //마커 추가
+        MapPOIItem marker = new MapPOIItem();
+        marker.setItemName("Default Marker");
+        marker.setTag(0);
+        marker.setMapPoint(MARKER_POINT);
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        mMapView.addPOIItem(marker);
+
+
         mapViewContainer.addView(mMapView);
     }
     //onCreate
